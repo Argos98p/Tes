@@ -1,0 +1,76 @@
+@prefix : <http://turis-ucuenca/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://turis-ucuenca/> .
+
+<http://turis-ucuenca/> rdf:type owl:Ontology ;
+                                         owl:imports <http://purl.org/acco/ns#> ,
+                                                     <http://purl.org/vocommons/voaf> ,
+                                                     <http://schema.org/> ,
+                                                     <http://www.semanticweb.org/ontologies/2012/4/accommodation-17042012.owl> ,
+                                                     <http://tour-pedia.org/download/tp.owl/> ,
+                                                     <http://www.w3.org/ns/prov#> ;
+                                         <http://purl.org/dc/elements/1.1/creator> "Ricardo Jarro , Juan Lazo" ;
+                                         <http://purl.org/dc/elements/1.1/title> "Cuenca Tour Ontology" ;
+                                         <http://purl.org/dc/terms/description> "Ontology for tesis." ;
+                                         <http://purl.org/dc/terms/issued> "2022-12-11" ;
+                                         <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/1.0/" ;
+                                         <http://purl.org/dc/terms/modified> "2022-12-11" ;
+                                         <http://purl.org/dc/terms/rights> "Copyright © 2015 Tourpedia" ;
+                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "tc" ;
+                                         rdfs:comment "Ontology for our tesis" ;
+                                         rdfs:isDefinedBy "localhost" ;
+                                         rdfs:label "Cuenca Tour Ontology" ;
+                                         owl:versionInfo "1.0" ;
+                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rights
+<http://purl.org/dc/terms/rights> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://turis-ucuenca/hasKey
+:hasKey rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string .

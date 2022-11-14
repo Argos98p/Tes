@@ -1,0 +1,1020 @@
+@prefix : <http://turis-ucuenca/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix acco: <http://purl.org/acco/ns#> .
+@prefix ns: <http://www.w3.org/2006/vcard/ns#> .
+@prefix ns1: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix core: <http://purl.org/vocab/frbr/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+@base  <http://turis-ucuenca/> .
+
+<http://turis-ucuenca/> rdf:type owl:Ontology ;
+                                         owl:imports <http://www.semanticweb.org/ontologies/2012/4/accommodation-17042012.owl> ,
+                                                     prov: ;
+                                         dc:creator "Angelica Lo Duca" ;
+                                         dc:title "Tourpedia Ontology" ;
+                                         terms:description "A vocabulary to describe touristic places: accommodations, points of interest, restaurants and attractions." ;
+                                         terms:issued "2014-06-08" ;
+                                         terms:license "http://creativecommons.org/licenses/by/1.0/" ;
+                                         terms:modified "2015-06-08" ;
+                                         terms:rights "Copyright © 2015 Tourpedia" ;
+                                         vann:preferredNamespacePrefix "tp" ;
+                                         rdfs:comment "A vocabulary to describe touristic places: accommodations, points of interest, restaurants and attractions." ;
+                                         rdfs:isDefinedBy "http://tour-pedia.org/download/tp.owl" ;
+                                         rdfs:label "Tourpedia Ontology" ;
+                                         owl:versionInfo "1.0" ;
+                                         ns1:term_status "testing" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+terms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+terms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+terms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+terms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rights
+terms:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+ns1:term_status rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/location
+<http://dbpedia.org/ontology/location> rdf:type owl:ObjectProperty ;
+                                       rdfs:domain :Place .
+
+
+###  http://dbpedia.org/ontology/wikiPageExternalLink
+<http://dbpedia.org/ontology/wikiPageExternalLink> rdf:type owl:ObjectProperty ;
+                                                   rdfs:domain :Place .
+
+
+###  http://purl.org/marl/0.2/ns#hasPolarity
+<http://purl.org/marl/0.2/ns#hasPolarity> rdf:type owl:ObjectProperty ;
+                                          rdfs:domain prov:Entity .
+
+
+###  http://schema.org/sameAs
+<http://schema.org/sameAs> rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Place .
+
+
+###  http://tour-pedia.org/download/tp.owladmin
+:admin rdf:type owl:ObjectProperty ;
+       rdfs:domain org:Organization ;
+       rdfs:range :Place .
+
+
+###  http://tour-pedia.org/download/tp.owlcomment
+:comment rdf:type owl:ObjectProperty ;
+         rdfs:domain foaf:Person .
+
+
+###  http://tour-pedia.org/download/tp.owlcreatedBy
+:createdBy rdf:type owl:ObjectProperty ;
+           owl:inverseOf :hasCreated ;
+           rdfs:domain :Place ;
+           rdfs:range org:Organization ,
+                      foaf:Person .
+
+
+###  http://tour-pedia.org/download/tp.owlhasCreated
+:hasCreated rdf:type owl:ObjectProperty ;
+            rdfs:domain org:Organization ,
+                        foaf:Person ;
+            rdfs:range :Place .
+
+
+###  http://tour-pedia.org/download/tp.owlrate
+:rate rdf:type owl:ObjectProperty ;
+      rdfs:domain foaf:Person .
+
+
+###  http://www.w3.org/2004/02/skos/core#related
+<http://www.w3.org/2004/02/skos/core#related> rdf:type owl:ObjectProperty ;
+                                              rdfs:domain :Accommodation .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dbpedia.org/ontology/address
+<http://dbpedia.org/ontology/address> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain :Place .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> rdf:type owl:DatatypeProperty ;
+                                              rdfs:domain :Place .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain :Place .
+
+
+###  http://www.w3.org/2006/vcard/ns#fn
+vcard:fn rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Place .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasPhoto
+vcard:hasPhoto rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Place .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasTelephone
+vcard:hasTelephone rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Place .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/acco/ns#Accommodation
+<http://purl.org/acco/ns#Accommodation> rdf:type owl:Class ;
+                                        owl:equivalentClass :Accommodation .
+
+
+###  http://schema.org/CivicStructure
+<http://schema.org/CivicStructure> rdf:type owl:Class ;
+                                   owl:equivalentClass :POI .
+
+
+###  http://schema.org/LodgingBusiness
+<http://schema.org/LodgingBusiness> rdf:type owl:Class ;
+                                    owl:equivalentClass :Accommodation .
+
+
+###  http://schema.org/Restaurant
+<http://schema.org/Restaurant> rdf:type owl:Class ;
+                               owl:equivalentClass :Restaurant .
+
+
+###  http://schema.org/TouristAttraction
+<http://schema.org/TouristAttraction> rdf:type owl:Class ;
+                                      owl:equivalentClass :Attraction .
+
+
+###  http://tour-pedia.org/download/tp.owlAccommodation
+:Accommodation rdf:type owl:Class ;
+               owl:equivalentClass <http://www.semanticweb.org/ontologies/2010/3/hotel-15072010.owl#Accommodation> ;
+               rdfs:subClassOf :Place ;
+               rdfs:label "Accommodation"@en .
+
+
+###  http://tour-pedia.org/download/tp.owlAttraction
+:Attraction rdf:type owl:Class ;
+            rdfs:subClassOf :Place ;
+            rdfs:label "Attraction"@en .
+
+
+###  http://tour-pedia.org/download/tp.owlOrganization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf org:Organization ;
+              rdfs:label "Organizacion"@es ,
+                         "Organization"@en .
+
+
+###  http://tour-pedia.org/download/tp.owlPOI
+:POI rdf:type owl:Class ;
+     rdfs:subClassOf :Place ;
+     rdfs:label "POI"@en .
+
+
+###  http://tour-pedia.org/download/tp.owlPlace
+:Place rdf:type owl:Class ;
+       owl:equivalentClass prov:Entity ;
+       rdfs:comment "The generic class for a touristic place." ;
+       rdfs:label "Place" .
+
+
+###  http://tour-pedia.org/download/tp.owlRestaurant
+:Restaurant rdf:type owl:Class ;
+            rdfs:subClassOf :Place ;
+            rdfs:label "Restaurant"@en .
+
+
+###  http://www.semanticweb.org/ontologies/2010/3/hotel-15072010.owl#Accommodation
+<http://www.semanticweb.org/ontologies/2010/3/hotel-15072010.owl#Accommodation> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/org#Organization
+org:Organization rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Entity
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+:Semerkand_Glaubens_und_Kulturzentrum_Geom a geo:Geometry ;
+  wgs:lat "52.50025"^^xsd:float ;
+  wgs:long "13.360735"^^xsd:float .
+
+
+:Semerkand_Glaubens_und_Kulturzentrum rdf:type owl:NamedIndividual ,
+               :POI ;
+               a geo:Geometry ;
+               dbpedia-owl:address "" ;
+      dbpedia-owl:location dbpedia:Berlin ;
+      dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/semerkand-glaubens-und-kulturzentrum/51796c3f498e9b657e2d1c65> ;
+      dc:title "Semerkand Glaubens- und Kulturzentrum" ;
+      rdf:label "Semerkand Glaubens- und Kulturzentrum" ;
+      vcard:fn "Semerkand Glaubens- und Kulturzentrum" ;
+      geo:hasGeometry :Semerkand_Glaubens_und_Kulturzentrum_Geom .
+      
+
+:M41_Geibelstrasse_Geom a geo:Geometry ;
+  wgs:lat "38.89761"^^xsd:float ;
+  wgs:long "-77.03637"^^xsd:float .
+
+:M41_Geibelstrasse rdf:type owl:NamedIndividual ,
+            :POI ;
+            dbpedia-owl:address "" ;
+            dbpedia-owl:location dbpedia:Berlin ;
+            dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/m41--geibelstrasse/51797724498ee6e7c153e9ab> ;
+            dc:title "M41 - Geibelstrasse" ;
+            rdf:label "M41 - Geibelstrasse" ;
+            vcard:fn "M41 - Geibelstrasse" ;
+            geo:hasGeometry :M41_Geibelstrasse_Geom .
+
+
+:M41_Kortestrasse_Geom a geo:Geometry ;
+  wgs:lat "52.492157"^^xsd:float ;
+  wgs:long "13.41237"^^xsd:float .
+
+:M41_Kortestrasse rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                                      a geo:Geometry ;
+                                              geo:hasGeometry :M41_Kortestrasse_Geom ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/m41--k%C3%B6rtestrasse/51797757498eac4e751b0480> ;
+                                             dc:title "M41 - Körtestrasse" ;
+                                             rdf:label "M41 - Körtestrasse" ;
+                                             vcard:fn "M41 - Körtestrasse" ;
+                                             wgs:lat "52.492157"^^xsd:float ;
+                                             wgs:long "13.41237"^^xsd:float .
+
+
+:linda_carrell_Geom a geo:Geometry ;
+      wgs:lat "52.548046"^^xsd:float ;
+      wgs:long "13.409723"^^xsd:float .
+
+:linda_carrell rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Rhinower Str 4" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/linda-carrell/51797f9de4b070a9d7f205ca> ;
+                                             dc:title "Linda Carrell" ;
+                                             rdf:label "Linda Carrell" ;
+                                             vcard:fn "Linda Carrell" ;
+                                             geo:hasGeometry :linda_carrell_Geom .
+
+
+:a_park_Geom a geo:Geometry ;
+      wgs:lat "52.43493"^^xsd:float ;
+      wgs:long "13.521826"^^xsd:float .
+
+:a_park rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/a-park/51798394e4b026eed6c020c3> ;
+                                             dc:title "A Park" ;
+                                             rdf:label "A Park" ;
+                                             vcard:fn "A Park" ;
+                                             geo:hasGeometry :a_park_Geom .
+
+
+
+:a_park_bei_moppy_Geom a geo:Geometry ;
+      wgs:lat "52.43495"^^xsd:float ;
+      wgs:long "13.521807"^^xsd:float .
+
+:a_park_bei_moppy rdf:type owl:NamedIndividual ,
+                                             :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/a-park-bei-moppy/5179856fe4b089d6d4fc62df> ;
+                                             dc:title "A Park Bei Moppy" ;
+                                             rdf:label "A Park Bei Moppy" ;
+                                             vcard:fn "A Park Bei Moppy" ;
+                                             wgs:lat "52.43495"^^xsd:float ;
+                                             geo:hasGeometry :a_park_bei_moppy_Geom .
+
+
+
+:frolic-lounge_Geom a geo:Geometry ;
+      wgs:lat "52.43495"^^xsd:float ;
+      wgs:long "13.521807"^^xsd:float .
+
+:frolic-lounge rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Rathaus Köpenick" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/frolic-lounge/51799f4ee4b001f748e6a476> ;
+                                             dc:title "Frolic Lounge" ;
+                                             rdf:label "Frolic Lounge" ;
+                                             vcard:fn "Frolic Lounge" ;
+                                             geo:hasGeometry :frolic-lounge_Geom .
+
+
+:friedrich-ebert-platz_Geom a geo:Geometry ;
+      wgs:lat "52.51856"^^xsd:float ;
+      wgs:long "13.377067"^^xsd:float .
+
+
+:friedrich-ebert-platz rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Friedrich-Ebert-Platz" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/friedrichebertplatz/517a1314e4b0fa32805567b8> ;
+                                             dc:title "Friedrich-Ebert-Platz" ;
+                                             rdf:label "Friedrich-Ebert-Platz" ;
+                                             vcard:fn "Friedrich-Ebert-Platz" ;
+                                             geo:hasGeometry :friedrich-ebert-platz_Geom .
+
+
+:pizza_hot_freshz_Geom a geo:Geometry ;
+      wgs:lat "52.534775"^^xsd:float ;
+      wgs:long "13.19665"^^xsd:float .
+
+:pizza_hot_fresh rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Jüdenstraße 17" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/pizza-hotfresh/51c301fb498eae33975547df> ;
+                                             dc:title "pizza hot&fresh" ;
+                                             rdf:label "pizza hot&fresh" ;
+                                             vcard:fn "pizza hot&fresh" ;
+                                             geo:hasGeometry :pizza_hot_freshz_Geom .
+
+
+:centro_dental_Geom a geo:Geometry ;
+      wgs:lat "52.505833"^^xsd:float ;
+      wgs:long "13.306828"^^xsd:float .
+
+:centro_dental rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/centro-dental/51c30e06498edfff0298fc00> ;
+                                             dc:title "Centro Dental" ;
+                                             rdf:label "Centro Dental" ;
+                                             vcard:fn "Centro Dental" ;
+                                              geo:hasGeometry :centro_dental_Geom .
+
+:filou_Geom a geo:Geometry ;
+       wgs:lat "52.539852"^^xsd:float ;
+       wgs:long "13.203151"^^xsd:float .
+
+:filou rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/filou/51c30e88498e497b1f925f02> ;
+                                             dc:title "filou" ;
+                                             rdf:label "filou" ;
+                                             vcard:fn "filou" ;
+                                            geo:hasGeometry :filou_Geom .
+
+
+:planschparadies_Geom a geo:Geometry ;
+      wgs:lat "52.557274"^^xsd:float ;
+      wgs:long "13.502623"^^xsd:float .
+
+:planschparadies rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                                      a geo:Geometry ;
+                                             dbpedia-owl:address "Berlin" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/planschparadies-berlin/51c313b5498e642a928ec4a7> ;
+                                             dc:title "Planschparadies" ;
+                                             rdf:label "Planschparadies" ;
+                                             vcard:fn "Planschparadies" ;
+                                             geo:hasGeometry :planschparadies_Geom .
+
+
+
+
+:stadtbad_neukoelln_Geom a geo:Geometry ;
+      wgs:lat "52.479015"^^xsd:float ;
+      wgs:long "13.416037"^^xsd:float .
+
+:stadtbad_neukoelln rdf:type owl:NamedIndividual ,
+                                                :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/stadtbad-neukoelln/51c31780498e0a549f7b59ed> ;
+                                             dc:title "Stadtbad Neukoelln" ;
+                                             rdf:label "Stadtbad Neukoelln" ;
+                                             vcard:fn "Stadtbad Neukoelln" ;
+                                             geo:hasGeometry :stadtbad_neukoelln_Geom .
+                                            
+
+
+
+:steakhaus_el_ganado_Geom a geo:Geometry ;
+      wgs:lat "52.447227"^^xsd:float ;
+      wgs:long "13.50684"^^xsd:float .
+
+:steakhaus_el_ganado rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/steakhaus-el-ganado/51c31b1c498e6000185c33dc> ;
+                                             dc:title "Steakhaus El Ganado" ;
+                                             rdf:label "Steakhaus El Ganado" ;
+                                             vcard:fn "Steakhaus El Ganado" ;
+                                             geo:hasGeometry :steakhaus_el_ganado_Geom .
+                                             
+
+:burger_tuning_Geom a geo:Geometry ;
+      wgs:lat "52.54254"^^xsd:float ;
+      wgs:long "13.205848"^^xsd:float .
+
+:burger_tuning rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/burger-tuning/51c31d93498e30de7c9a8690> ;
+                                             dc:title "burger tuning" ;
+                                             rdf:label "burger tuning" ;
+                                             vcard:fn "burger tuning" ;
+                                             geo:hasGeometry :burger_tuning_Geom .
+                                             
+
+
+:neuenhagener_str_Geom a geo:Geometry ;
+     wgs:lat "52.53364"^^xsd:float ;
+     wgs:long "13.62276"^^xsd:float .
+
+:neuenhagener_str rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                                      a geo:Geometry ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/bus-195-s-marzahn--neuenhagener-str/51c32088498ef3fd924915c4> ;
+                                             dc:title "Bus 195 S Marzahn <> Neuenhagener Str." ;
+                                             rdf:label "Bus 195 S Marzahn <> Neuenhagener Str." ;
+                                             vcard:fn "Bus 195 S Marzahn <> Neuenhagener Str." ;
+                                             geo:hasGeometry :neuenhagener_str_Geom.
+                                             
+
+:il_castello_del_gelato_Geom a geo:Geometry ;
+     wgs:lat "52.59024"^^xsd:float ;
+     wgs:long "13.286211"^^xsd:float .
+     
+:il_castello_del_gelato rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Gorkistraße" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/il-castello-del-gelato/51c3234e498e83bd2f7d4d84> ;
+                                             dc:title "Il Castello del Gelato" ;
+                                             rdf:label "Il Castello del Gelato" ;
+                                             vcard:fn "Il Castello del Gelato" ;
+                                             geo:hasGeometry :il_castello_del_gelato_Geom.
+
+
+:ossastrabe_Geom a geo:Geometry ;
+     wgs:lat "52.48753"^^xsd:float ;
+                                             wgs:long "13.436554"^^xsd:float .
+     
+:ossastrabe rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Berlin ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/ossastra%C3%9Fe/51c32d00498e29b83b7b9bdb> ;
+                                             dc:title "Ossastraße" ;
+                                             rdf:label "Ossastraße" ;
+                                             vcard:fn "Ossastraße" ;
+                                             geo:hasGeometry :ossastrabe_Geom .
+
+:urban_male_lounge_Geom a geo:Geometry ;
+     wgs:lat "25.214466"^^xsd:float ;
+                                             wgs:long "55.28143"^^xsd:float .
+
+:urban_male_lounge rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "DIFC" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/urban-male-lounge/4cb98f3d4495721eb8f74a7a> ;
+                                             dc:title "Urban Male Lounge" ;
+                                             rdf:label "Urban Male Lounge" ;
+                                             vcard:fn "Urban Male Lounge" ;
+                                             geo:hasGeometry :urban_male_lounge_Geom .
+                                             
+
+
+:ibn_battuta_metro_station_2_Geom a geo:Geometry ;
+     wgs:lat "25.046667"^^xsd:float ;
+                                             wgs:long "55.117245"^^xsd:float .
+
+:ibn_battuta_metro_station_2 rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "United Arab Emirates" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/ibn-battuta-metro-station--%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D8%A8%D9%86-%D8%A8%D8%B7%D9%88%D8%B7%D8%A9/4cb9ba8d0180721ef3bf9561> ,
+                                                                              <https://maps.google.com/maps/place?cid=7647910308869569528> ;
+                                             dc:title "Ibn Battuta Metro Station 2" ;
+                                             rdf:label "Ibn Battuta Metro Station 2" ;
+                                             vcard:fn "Ibn Battuta Metro Station 2" ;
+                                             vcard:hasPhoto "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png" ;
+                                             vcard:hasUrl "http://www.rta.ae/" ;
+                                             geo:hasGeometry :ibn_battuta_metro_station_2_Geom .
+                                             
+
+
+:haagen-dazs_Geom a geo:Geometry ;
+      wgs:lat "25.233934"^^xsd:float ;
+      wgs:long "55.26456"^^xsd:float .
+
+:haagen-dazs rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Palm strip mall" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/haagendazs-%D9%87%D8%A7%D8%AC%D9%86-%D8%AF%D8%A7%D8%B2/4cb9ed9e035d236a3419d74e> ;
+                                             dc:title "Haagen-Dazs هاجن داز" ;
+                                             rdf:label "Haagen-Dazs هاجن داز" ;
+                                             vcard:fn "Haagen-Dazs هاجن داز" ;
+                                             geo:hasGeometry :haagen-dazs_Geom .
+
+
+:number_one_tower_suites_Geom a geo:Geometry ;
+      wgs:lat "25.210556"^^xsd:float ;
+      wgs:long "55.27369"^^xsd:float .
+
+:number_one_tower_suites rdf:type owl:NamedIndividual ,
+                                                      acco:Accommodation ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Sheikh Zayed Road, Trade Centre 1,  Dubai" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <http://www.booking.com/hotel/ae/number-one-tower-suites.en-gb.html> ,
+                                                                              <https://foursquare.com/v/number-one-tower-suites-%D8%A8%D8%B1%D8%AC-%D8%B1%D9%82%D9%85-%D9%88%D8%A7%D8%AD%D8%AF/4cb9f3187148f04d678dd9ab> ,
+                                                                              <https://plus.google.com/108037322073855333632/about?hl=en-US> ;
+                                             acco:feature "24-hour front desk" ,
+                                                          "air conditioning" ,
+                                                          "breakfast in the room" ,
+                                                          "business centre" ,
+                                                          "car hire" ,
+                                                          "currency exchange" ,
+                                                          "dry cleaning" ,
+                                                          "express check-in check-out" ,
+                                                          "family rooms" ,
+                                                          "fax photocopying" ,
+                                                          "fitness centre" ,
+                                                          "indoor pool" ,
+                                                          "laundry" ,
+                                                          "lift elevator" ,
+                                                          "luggage storage" ,
+                                                          "meeting banquet facilities" ,
+                                                          "newspapers" ,
+                                                          "restaurant" ,
+                                                          "restaurant (buffet)" ,
+                                                          "restaurant (à la carte)" ,
+                                                          "room service" ,
+                                                          "safety deposit box" ,
+                                                          "sauna" ,
+                                                          "soundproof rooms" ,
+                                                          "ticket service" ,
+                                                          "tour desk" ;
+                                             dc:title "Number One Tower Suites" ;    
+                                             rdfs:label "Number One Tower Suites" ;
+                                             vcard:fn "Number One Tower Suites" ;
+                                             vcard:hasPhoto "http://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png" ;
+                                             vcard:hasTelephone "+971 4 343 4666" ;
+                                             vcard:hasUrl "http://www.numberonetower.com/" ;
+                                             geo:hasGeometry :number_one_tower_suites_Geom .
+
+:studio_city_Geom a geo:Geometry ;
+      wgs:lat "25.04915"^^xsd:float ;
+      wgs:long "55.25324"^^xsd:float .
+
+:studio_city rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Studio city" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/nkd-pizza-studio-city/4cba5ea3adcd5481a8de22a2> ;
+                                             dc:title "nkd Pizza Studio city" ;
+                                             rdf:label "nkd Pizza Studio city" ;
+                                             vcard:fn "nkd Pizza Studio city" ;
+                                             geo:hasGeometry :studio_city_Geom .
+
+:emirates_bus_Geom a geo:Geometry ;
+      wgs:lat "25.09934"^^xsd:float ;
+      wgs:long "55.172943"^^xsd:float .
+
+:emirates_bus rdf:type owl:NamedIndividual ,
+                                                      acco:Accommodation ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/emirates-bus/4cba664d4c60a093a33146ca> ;
+                                             dc:title "Emirates Bus" ;
+                                             rdfs:label "Emirates Bus" ;
+                                             vcard:fn "Emirates Bus" ;
+                                             geo:hasGeometry :emirates_bus_Geom .
+
+:malek_al_mandi_Geom a geo:Geometry ;
+      wgs:lat "25.201815"^^xsd:float ;
+      wgs:long "55.377125"^^xsd:float .
+
+
+:malek_al_mandi rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Emarat Station, Nad al Hamar" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/malek-al-mandi-%D9%85%D9%84%D9%83-%D8%A7%D9%84%D9%85%D9%86%D8%AF%D9%8A-dubai/4cbac406f50e224bf0d2f5fb> ;
+                                             dc:title "Malek Al Mandi ملك المندي" ;
+                                             rdf:label "Malek Al Mandi ملك المندي" ;
+                                             vcard:fn "Malek Al Mandi ملك المندي" ;
+                                             geo:hasGeometry :malek_al_mandi_Geom .
+
+
+:subway1_Geom a geo:Geometry ;
+
+      wgs:lat "25.201912"^^xsd:float ;
+      wgs:long "55.376587"^^xsd:float .
+
+
+:subway1 rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Emarat Station, Nad al Hamar" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/subway-%D8%B5%D8%A8-%D9%88%D9%8A/4cbaca8343ec6dcbceb7a631> ;
+                                             dc:title "Subway صب وي" ;
+                                             rdf:label "Subway صب وي" ;
+                                             vcard:fn "Subway صب وي" ;
+                                          geo:hasGeometry :subway1_Geom .
+
+
+:world_trade_centre_metro_station_Geom a geo:Geometry ;
+      wgs:lat "25.224876"^^xsd:float ;
+      wgs:long "55.28512"^^xsd:float .
+
+
+
+:world_trade_centre_metro_station rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Sheikh Zayed Road - Dubai - United Arab Emirates" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/world-trade-center-metro-station--%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A/4cbb00394495721e8c2e537a> ,
+                                                                              <https://maps.google.com/maps/place?cid=1944339322534438072> ;
+                                             dc:title "World Trade Centre Metro Station" ;
+                                             rdf:label "World Trade Centre Metro Station" ;
+                                             vcard:fn "World Trade Centre Metro Station" ;
+                                             vcard:hasPhoto "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png" ;
+                                             geo:hasGeometry :world_trade_centre_metro_station_Geom .
+
+
+
+:dhaba_Geom a geo:Geometry ;
+      wgs:lat "25.27399"^^xsd:float ;
+      wgs:long "55.378803"^^xsd:float .
+
+:dhaba rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Qusais" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/dhaba/4cbb0f2a76ad9c744aede6cb> ;
+                                             dc:title "Dhaba" ;
+                                             rdf:label "Dhaba" ;
+                                             vcard:fn "Dhaba" ;
+                                                geo:hasGeometry :dhaba_Geom .
+
+
+:business_bay_metro_station_1_Geom a geo:Geometry ;
+      wgs:lat "25.19147"^^xsd:float ;
+      wgs:long "55.26031"^^xsd:float .
+
+
+:business_bay_metro_station_1 rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Sheikh Zayed Road - Dubai - United Arab Emirates" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/business-bay-metro-station--%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC-%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A/4cbbdf02d78f46883531c573> ,
+                                                                              <https://maps.google.com/maps/place?cid=17109552960258397725> ;
+                                             dc:title "Business Bay Metro Station 1" ;
+                                             rdf:label "Business Bay Metro Station 1" ;
+                                             vcard:fn "Business Bay Metro Station 1" ;
+                                             vcard:hasPhoto "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png" ;
+                                             vcard:hasUrl "http://www.rta.ae/" ;
+                                                geo:hasGeometry :business_bay_metro_station_1_Geom .
+
+
+:arno_a_the_view_Geom a geo:Geometry ;
+      wgs:lat "25.091347"^^xsd:float ;
+      wgs:long "55.171143"^^xsd:float .
+
+
+:arno_a_the_view rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/arno-a-the-views/4cbbf20990c9a143d83a98d6> ;
+                                             dc:title "Arno A, The Views" ;
+                                             rdf:label "Arno A, The Views" ;
+                                             vcard:fn "Arno A, The Views" ;
+                                             geo:hasGeometry :arno_a_the_view_Geom .
+
+:zaroob_restaurant_Geom a geo:Geometry ;
+                                             wgs:lat "25.213797"^^xsd:float ;
+                                             wgs:long "55.277218"^^xsd:float .
+      
+
+###  file:/data/d2rq-0.8.1/tourpedia.rdf#116613
+:zaroob_restaurant rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Sheikh Zayed Road - Dubai - United Arab Emirates" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/zaroob-restaurant-%D8%B2%D8%A7%D8%B1%D9%88%D8%A8/4cbc0811bac937046896f57c> ,
+                                                                              <https://plus.google.com/112774490654485313492/about?hl=en-US> ;
+                                             dc:title "Zaroob Restaurant" ;
+                                             rdf:label "Zaroob Restaurant" ;
+                                             vcard:fn "Zaroob Restaurant" ;
+                                             vcard:hasPhoto "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png" ;
+                                             vcard:hasTelephone "+971 4 327 6060" ;
+                                             vcard:hasUrl "http://www.roundmenu.com/restaurant/1107" ;
+                                             geo:hasGeometry :zaroob_restaurant_Geom .
+
+
+
+:dunkin_donuts_Geom a geo:Geometry ;
+                                             wgs:lat "25.193962"^^xsd:float ;
+                                             wgs:long "55.261314"^^xsd:float .
+      
+:dunkin_donuts rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Sheikh Zayed Road" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/dunkin-donuts/4cbc2b80f50e224b0476fdfb> ;
+                                             dc:title "Dunkin' Donuts" ;
+                                             rdf:label "Dunkin' Donuts" ;
+                                             vcard:fn "Dunkin' Donuts" ;
+                                             geo:hasGeometry :dunkin_donuts_Geom .
+
+
+
+:emirates_clinic_Geom a geo:Geometry ;
+                                             wgs:lat "25.186262"^^xsd:float ;
+                                             wgs:long "55.257233"^^xsd:float .
+
+:emirates_clinic rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "DNATA Building" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/emirates-clinic/4cbc3c02035d236a2043e44e> ;
+                                             dc:title "Emirates Clinic" ;
+                                             rdf:label "Emirates Clinic" ;
+                                             vcard:fn "Emirates Clinic" ;
+                                             geo:hasGeometry :emirates_clinic_Geom .
+
+:sheraton_deira_hotel_dubai_Geom a geo:Geometry ;
+                                             wgs:lat "25.274708"^^xsd:float ;
+                                             wgs:long "55.32747"^^xsd:float .
+      
+
+:sheraton_deira_hotel_dubai rdf:type owl:NamedIndividual ,
+                                                      acco:Accommodation ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Al Muteena Street, Deira,  Dubai" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <http://www.booking.com/hotel/ae/sheraton-deira-dubai.en-gb.html> ,
+                                                                              <https://foursquare.com/v/sheraton-deira-hotel-dubai/4cbc54457a5d9eb0805b31e9> ,
+                                                                              <https://plus.google.com/108199740633869535204/about?hl=en-US> ;
+                                             dc:title "Sheraton Deira Hotel Dubai" ;
+                                             rdfs:label "Sheraton Deira Hotel Dubai" ;
+                                             vcard:fn "Sheraton Deira Hotel Dubai" ;
+                                             vcard:hasPhoto "http://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png" ;
+                                             vcard:hasTelephone "+971 4 268 8888" ;
+                                             vcard:hasUrl "http://www.sheratondeiradubai.com/?utm_source=google&utm_medium=places&utm_campaign=gplaces_dfm&EM=Google_Places_724_DFM_ME_EAME" ;
+                                             geo:hasGeometry :sheraton_deira_hotel_dubai_Geom .
+
+
+:le_meridien_fairway_Geom a geo:Geometry ;
+                                             wgs:lat "25.247877"^^xsd:float ;
+                                             wgs:long "55.337788"^^xsd:float .
+
+
+:le_meridien_fairway rdf:type owl:NamedIndividual ,
+                                                      acco:Accommodation ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Al Garhoud Road, Garhoud,  Dubai" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <http://www.booking.com/hotel/ae/le-meridien-fairway.en-gb.html> ,
+                                                                              <https://foursquare.com/v/le-m%C3%A9ridien-fairway/4cbc555f7a5d9eb0565c31e9> ,
+                                                                              <https://plus.google.com/117703897147408014209/about?hl=en-US> ;
+                                             acco:feature "24-hour front desk" ,
+                                                          "bar" ,
+                                                          "business centre" ,
+                                                          "currency exchange" ,
+                                                          "dry cleaning" ,
+                                                          "express check-in check-out" ,
+                                                          "fax photocopying" ,
+                                                          "fitness centre" ,
+                                                          "hot tub" ,
+                                                          "ironing service" ,
+                                                          "laundry" ,
+                                                          "lift elevator" ,
+                                                          "luggage storage" ,
+                                                          "non-smoking rooms" ,
+                                                          "outdoor pool" ,
+                                                          "restaurant" ,
+                                                          "room service" ,
+                                                          "safety deposit box" ,
+                                                          "shoeshine" ,
+                                                          "shuttle service (surcharge)" ,
+                                                          "ticket service" ,
+                                                          "tour desk" ,
+                                                          "vip room facilities" ;
+                                             dc:title "Le Meridien Fairway" ;
+                                             rdfs:label "Le Meridien Fairway" ;
+                                             vcard:fn "Le Meridien Fairway" ;
+                                             geo:hasGeometry :le_meridien_fairway_Geom  .
+
+
+
+:tayyab_boats_Geom a geo:Geometry ;
+                                             wgs:lat "25.289831"^^xsd:float ;
+                                             wgs:long "55.446022"^^xsd:float .
+:tayyab_boats rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Near Sharjah Univercity" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/tayyab-boats/4cbc8c0ec7228cfab39724ce> ;
+                                             dc:title "Tayyab Boats" ;
+                                             rdf:label "Tayyab Boats" ;
+                                             vcard:fn "Tayyab Boats" ;
+                                             geo:hasGeometry :tayyab_boats_Geom.
+
+
+
+:off_road_motors_Geom a geo:Geometry ;
+                                             wgs:lat "25.161615"^^xsd:float ;
+                                             wgs:long "55.232822"^^xsd:float .
+
+:off_road_motors rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/offroad-motors/4cbd5a1690c9a1438896a0d6> ;
+                                             dc:title "Off-Road Motors" ;
+                                             rdf:label "Off-Road Motors" ;
+                                             vcard:fn "Off-Road Motors" ;
+                                             geo:hasGeometry :off_road_motors_Geom .
+
+
+
+
+
+
+
+
+
+:rigga_street_Geom a geo:Geometry ;
+            wgs:lat "25.263607"^^xsd:float ;
+            wgs:long "55.323193"^^xsd:float .
+
+:rigga_street rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "Rigga St." ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/rigga-street/4cbd6d7fadcd54811a8233a2> ;
+                                             dc:title "Rigga Street" ;
+                                             rdf:label "Rigga Street" ;
+                                             vcard:fn "Rigga Street" ;
+                                             geo:hasGeometry :rigga_street_Geom .
+
+
+:algerian_consulate_Geom a geo:Geometry ;
+                                             wgs:lat "25.1983"^^xsd:float ;
+                                             wgs:long "55.2455"^^xsd:float .
+:algerian_consulate rdf:type owl:NamedIndividual ,
+                                                      :POI ;
+                                             dbpedia-owl:address "St 24B villa 45, Jumeira" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/algerian-consulate/4cbd6dffa33bb1f7e0f89efd> ;
+                                             dc:title "Algerian Consulate" ;
+                                             rdf:label "Algerian Consulate" ;
+                                             vcard:fn "Algerian Consulate" ;
+                                             geo:hasGeometry :algerian_consulate_Geom .
+
+
+:kamar_mba_lia_Geom a geo:Geometry ;
+                                             wgs:lat "25.066446"^^xsd:float ;
+                                             wgs:long "55.21031"^^xsd:float .
+:kamar_mba_lia rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "M1,amsa-atlantis,jumeirah village south" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/kamar-mba-lia/4cbdd2d09552b60ca747ed8b> ;
+                                             dc:title "kamar mba lia" ;
+                                             rdf:label "kamar mba lia" ;
+                                             vcard:fn "kamar mba lia" ;
+                                             geo:hasGeometry :kamar_mba_lia_Geom .
+
+
+:kfc_rashidiya_Geom a geo:Geometry ;
+                                             wgs:lat "25.227606"^^xsd:float ;
+                                             wgs:long "55.393288"^^xsd:float .
+:kfc_rashidiya rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/kfc-rashidiya/4cbdd83badcd54813b1836a2> ;
+                                             dc:title "Kfc Rashidiya" ;
+                                             rdf:label "Kfc Rashidiya" ;
+                                             vcard:fn "Kfc Rashidiya" ;
+                                             geo:hasGeometry :kfc_rashidiya_Geom .
+
+
+:ruths_chris_steak_house_Geom a geo:Geometry ;
+                                             wgs:lat "25.230345"^^xsd:float ;
+                                             wgs:long "55.28698"^^xsd:float .
+:ruths_chris_steak_house rdf:type owl:NamedIndividual ,
+                                                      :Restaurant ,
+                                                      :POI ;
+                                             dbpedia-owl:address "The H Hotel Dubai - Sheikh Zayed Road - Dubai - United Arab Emirates" ;
+                                             dbpedia-owl:location dbpedia:Dubai ;
+                                             dbpedia-owl:wikiPageExternalLink <https://foursquare.com/v/ruths-chris-steak-house/4cbde0caa33bb1f7cdbea1fd> ,
+                                                                              <https://plus.google.com/114945376996359080954/about?hl=en-US> ;
+                                             dc:title "Ruth's Chris Steak House" ;
+                                             rdf:label "Ruth's Chris Steak House" ;
+                                             vcard:fn "Ruth's Chris Steak House" ;
+                                             vcard:hasPhoto "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png" ;
+                                             vcard:hasTelephone "+971 4 501 8666" ;
+                                             vcard:hasUrl "http://www.roundmenu.com/restaurant/99" ;
+                                             geo:hasGeometry :ruths_chris_steak_house_Geom  .
+
+
+[ vcard:fn ""
+] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
