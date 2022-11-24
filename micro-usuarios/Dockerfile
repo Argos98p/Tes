@@ -10,7 +10,7 @@ COPY .mvn .mvn
 COPY pom.xml .
 
 # Copy the project source
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11
 MAINTAINER baeldung.com
 COPY target/user-micro-1.0.jar user-micro-1.0.jar
 ENTRYPOINT ["java","-jar","/user-micro-1.0.jar"]

@@ -74,3 +74,7 @@
 ###  http://turis-ucuenca/hasKey
 :hasKey rdf:type owl:DatatypeProperty ;
         rdfs:range xsd:string .
+
+:createdBy rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string .
+

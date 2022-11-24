@@ -2,6 +2,7 @@
 /home/argos98/Tesis/micro-usuarios/src/main/java/com/bezkoder/spring/security/mongodb/repository/UserRepository.java
 /home/argos98/Tesis/micro-usuarios/src/main/java/com/bezkoder/spring/security/mongodb/payload/response/MessageResponse.java
 /home/argos98/Tesis/micro-usuarios/src/main/java/com/bezkoder/spring/security/mongodb/controllers/TestController.java
+/home/argos98/Tesis/micro-usuarios/src/main/java/com/bezkoder/spring/security/mongodb/serviceTriplestore/Triplestore.java
 /home/argos98/Tesis/micro-usuarios/src/main/java/com/bezkoder/spring/security/mongodb/security/WebSecurityConfig.java
 /home/argos98/Tesis/micro-usuarios/src/main/java/com/bezkoder/spring/security/mongodb/SpringBootMongodbLoginApplication.java
 /home/argos98/Tesis/micro-usuarios/src/main/java/com/bezkoder/spring/security/mongodb/security/jwt/JwtUtils.java

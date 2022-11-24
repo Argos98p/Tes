@@ -2,11 +2,13 @@ package com.bezkoder.spring.security.mongodb.controllers;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.bezkoder.spring.security.mongodb.serviceTriplestore.Triplestore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -56,6 +58,7 @@ public class AuthController {
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
+
     Authentication authentication = authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -69,12 +72,15 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
+
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
         .body(new UserInfoResponse(userDetails.getId(),
                                    userDetails.getUsername(),
                                    userDetails.getEmail(),
                                    roles));
   }
+
+
 
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
@@ -94,6 +100,8 @@ public class AuthController {
     User user = new User(signUpRequest.getUsername(), 
                          signUpRequest.getEmail(),
                          encoder.encode(signUpRequest.getPassword()));
+
+
 
     Set<String> strRoles = signUpRequest.getRoles();
     Set<Role> roles = new HashSet<>();
@@ -128,6 +136,17 @@ public class AuthController {
     user.setRoles(roles);
     userRepository.save(user);
 
-    return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    Optional<User> optional = userRepository.findByUsername(user.getUsername());
+
+    optional.ifPresent( user1 ->{
+      user.setId(user1.getId());
+    });
+    ResponseEntity<?> responseTriplestore = Triplestore.saveInTripleStore(user);
+    if(responseTriplestore.getStatusCodeValue()==200){
+      return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }else{
+      return  responseTriplestore;
+    }
+
   }
 }
