@@ -1,31 +1,29 @@
 @prefix : <http://turis-ucuenca/> .
+@prefix tp: <http://tour-pedia.org/download/tp.owl#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <http://turis-ucuenca/> .
 
 <http://turis-ucuenca/> rdf:type owl:Ontology ;
-                                         owl:imports <http://purl.org/acco/ns#> ,
-                                                     <http://purl.org/vocommons/voaf> ,
-                                                     <http://schema.org/> ,
-                                                     <http://www.semanticweb.org/ontologies/2012/4/accommodation-17042012.owl> ,
-                                                     <http://tour-pedia.org/download/tp.owl/> ,
-                                                     <http://www.w3.org/ns/prov#> ;
-                                         <http://purl.org/dc/elements/1.1/creator> "Ricardo Jarro , Juan Lazo" ;
-                                         <http://purl.org/dc/elements/1.1/title> "Cuenca Tour Ontology" ;
-                                         <http://purl.org/dc/terms/description> "Ontology for tesis." ;
-                                         <http://purl.org/dc/terms/issued> "2022-12-11" ;
-                                         <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/1.0/" ;
-                                         <http://purl.org/dc/terms/modified> "2022-12-11" ;
-                                         <http://purl.org/dc/terms/rights> "Copyright © 2015 Tourpedia" ;
-                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "tc" ;
-                                         rdfs:comment "Ontology for our tesis" ;
-                                         rdfs:isDefinedBy "localhost" ;
-                                         rdfs:label "Cuenca Tour Ontology" ;
-                                         owl:versionInfo "1.0" ;
-                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing" .
+                         owl:imports <http://tour-pedia.org/download/tp.owl> ;
+                         <http://purl.org/dc/elements/1.1/creator> "Ricardo Jarro , Juan Lazo" ;
+                         <http://purl.org/dc/elements/1.1/title> "Cuenca Tour Ontology" ;
+                         <http://purl.org/dc/terms/description> "Ontology for tesis." ;
+                         <http://purl.org/dc/terms/issued> "2022-12-11" ;
+                         <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/1.0/" ;
+                         <http://purl.org/dc/terms/modified> "2022-12-11" ;
+                         <http://purl.org/dc/terms/rights> "Copyright © 2015 Tourpedia" ;
+                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "tc" ;
+                         rdfs:comment "Ontology for our tesis" ;
+                         rdfs:isDefinedBy "localhost" ;
+                         rdfs:label "Cuenca Tour Ontology" ;
+                         owl:versionInfo "1.0" ;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing" .
 
 #################################################################
 #    Annotation properties
@@ -68,6 +66,35 @@
 
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://turis-ucuenca#admin
+<http://turis-ucuenca#admin> rdf:type owl:ObjectProperty ;
+                             owl:inverseOf <http://turis-ucuenca#isAdminBy> ;
+                             rdfs:domain <http://www.w3.org/ns/prov#Organization> ;
+                             rdfs:range dbo:Region .
+
+
+###  http://turis-ucuenca#create
+<http://turis-ucuenca#create> rdf:type owl:ObjectProperty ;
+                              rdfs:domain foaf:Person ;
+                              rdfs:range tp:Place .
+
+
+###  http://turis-ucuenca#isAdminBy
+<http://turis-ucuenca#isAdminBy> rdf:type owl:ObjectProperty ;
+                                 rdfs:domain dbo:Region ;
+                                 rdfs:range <http://www.w3.org/ns/prov#Organization> .
+
+
+###  http://turis-ucuenca#isCreatedBy
+<http://turis-ucuenca#isCreatedBy> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain tp:Place ;
+                                   rdfs:range foaf:Person .
+
+
+#################################################################
 #    Data properties
 #################################################################
 
@@ -75,6 +102,17 @@
 :hasKey rdf:type owl:DatatypeProperty ;
         rdfs:range xsd:string .
 
-:createdBy rdf:type owl:DatatypeProperty ;
-        rdfs:range xsd:string .
 
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/Region
+dbo:Region rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,99 @@
+##############################################
+# INSERTAR USUARIO
+##############################################
+prefix : <http://turis-ucuenca/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix myusers: <http://turis-ucuenca/user/>
+base  <http://turis-ucuenca/>
+
+INSERT {
+myusers:user-example  a  foaf:Person;
+          foaf:name "Ricardo Jarro";
+          foaf:mbox <ricardo.jarro98@ucuenca.edu.ec> ;
+          foaf:nick "rick619";
+          foaf:depiction  <adfadsf.com/user.png>.
+            } WHERE { };
+
+
+##############################################
+# INSERTAR ORGANIZACION
+##############################################
+prefix : <http://turis-ucuenca/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix myorg: <http://turis-ucuenca/org/>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+prefix org: <http://www.w3.org/TR/vocab-org/>
+base  <http://turis-ucuenca/>
+
+INSERT {
+ myorg:organization-example a org:Organization ;
+        vcard:organization-name "mi-organizacion".
+
+} WHERE{
+
+}
+
+##############################################
+# INSERTAR PARROQUIA/REGION
+##############################################
+
+prefix : <http://turis-ucuenca/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix myregiones: <http://turis-ucuenca/regiones/>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+prefix org: <http://www.w3.org/TR/vocab-org/>
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+base  <http://turis-ucuenca/>
+
+INSERT {
+    myregiones:region-example a :Region ;
+        geo:hasGeometry [
+        geo:asWKT "POLYGON ((149.06016 -35.23610, 149.060620 -35.236043, ... , 149.06016 -35.23610))"^^geo:wktLiteral ;
+    ] ;
+
+} WHERE{
+
+}
+
+
+##############################################
+# VINCULAR REGION CON ORGANIZACION
+##############################################
+prefix : <http://turis-ucuenca/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix myregiones: <http://turis-ucuenca/regiones/>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+prefix org: <http://www.w3.org/TR/vocab-org/>
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix myorg: <http://turis-ucuenca/org/>
+base  <http://turis-ucuenca/>
+
+INSERT {
+    myregiones:region-example :isAdminBy myorg:organization-example .
+    myorg:organization-example :admin myregiones:region-example .
+        
+
+} WHERE{
+
+}
+##############################################
+# AGREGAR USUARIO A ORGANIZACION
+##############################################
+
+
+prefix : <http://turis-ucuenca/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix myregiones: <http://turis-ucuenca/regiones/>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+prefix org: <http://www.w3.org/TR/vocab-org/>
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix myorg: <http://turis-ucuenca/org/>
+prefix myusers: <http://turis-ucuenca/user/>
+base  <http://turis-ucuenca/>
+
+INSERT {
+    myusers:user-example foaf:memberOf myorg:organization-example .
+    myorg:organization-example foaf:hasMember myusers:user-example .
+} WHERE{
+
+}
