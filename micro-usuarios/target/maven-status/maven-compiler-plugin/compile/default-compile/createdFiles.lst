@@ -2,8 +2,8 @@ com/bezkoder/spring/security/mongodb/payload/response/UserInfoResponse.class
 com/bezkoder/spring/security/mongodb/controllers/AuthController.class
 com/bezkoder/spring/security/mongodb/security/jwt/AuthEntryPointJwt.class
 com/bezkoder/spring/security/mongodb/models/Role.class
-com/bezkoder/spring/security/mongodb/serviceTriplestore/Triplestore.class
 com/bezkoder/spring/security/mongodb/security/WebSecurityConfig.class
+com/bezkoder/spring/security/mongodb/serviceTriplestore/Triplestore.class
 com/bezkoder/spring/security/mongodb/repository/UserRepository.class
 com/bezkoder/spring/security/mongodb/payload/request/SignupRequest.class
 com/bezkoder/spring/security/mongodb/SpringBootMongodbLoginApplication.class
@@ -12,8 +12,8 @@ com/bezkoder/spring/security/mongodb/repository/RoleRepository.class
 com/bezkoder/spring/security/mongodb/models/ERole.class
 com/bezkoder/spring/security/mongodb/payload/response/MessageResponse.class
 com/bezkoder/spring/security/mongodb/models/User.class
-com/bezkoder/spring/security/mongodb/payload/request/LoginRequest.class
 com/bezkoder/spring/security/mongodb/security/jwt/JwtUtils.class
+com/bezkoder/spring/security/mongodb/payload/request/LoginRequest.class
 com/bezkoder/spring/security/mongodb/controllers/TestController.class
 com/bezkoder/spring/security/mongodb/security/jwt/AuthTokenFilter.class
 com/bezkoder/spring/security/mongodb/security/services/UserDetailsImpl.class

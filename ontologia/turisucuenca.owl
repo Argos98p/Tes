@@ -102,6 +102,12 @@
 :hasKey rdf:type owl:DatatypeProperty ;
         rdfs:range xsd:string .
 
+###  http://turis-ucuenca/status
+:status rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:Boolean .
+
+:role rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string .
 
 #################################################################
 #    Classes

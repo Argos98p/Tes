@@ -23,11 +23,13 @@ prefix foaf: <http://xmlns.com/foaf/0.1/>
 prefix myorg: <http://turis-ucuenca/org/>
 prefix vcard: <http://www.w3.org/2006/vcard/ns#>
 prefix org: <http://www.w3.org/TR/vocab-org/>
+prefix dc:< http://purl.org/dc/elements/1.1/>
 base  <http://turis-ucuenca/>
 
 INSERT {
  myorg:organization-example a org:Organization ;
-        vcard:organization-name "mi-organizacion".
+        vcard:organization-name "mi-organizacion";
+        dc:title "mi-organizacion".
 
 } WHERE{
 
@@ -39,14 +41,16 @@ INSERT {
 
 prefix : <http://turis-ucuenca/>
 prefix foaf: <http://xmlns.com/foaf/0.1/>
-prefix myregiones: <http://turis-ucuenca/regiones/>
+prefix myregiones: <http://turis-ucuenca/region/>
 prefix vcard: <http://www.w3.org/2006/vcard/ns#>
 prefix org: <http://www.w3.org/TR/vocab-org/>
 prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix dc:< http://purl.org/dc/elements/1.1/>
 base  <http://turis-ucuenca/>
 
 INSERT {
     myregiones:region-example a :Region ;
+    dc:title "mi region";
         geo:hasGeometry [
         geo:asWKT "POLYGON ((149.06016 -35.23610, 149.060620 -35.236043, ... , 149.06016 -35.23610))"^^geo:wktLiteral ;
     ] ;
@@ -61,7 +65,7 @@ INSERT {
 ##############################################
 prefix : <http://turis-ucuenca/>
 prefix foaf: <http://xmlns.com/foaf/0.1/>
-prefix myregiones: <http://turis-ucuenca/regiones/>
+prefix myregiones: <http://turis-ucuenca/region/>
 prefix vcard: <http://www.w3.org/2006/vcard/ns#>
 prefix org: <http://www.w3.org/TR/vocab-org/>
 prefix geo: <http://www.opengis.net/ont/geosparql#>
@@ -83,7 +87,7 @@ INSERT {
 
 prefix : <http://turis-ucuenca/>
 prefix foaf: <http://xmlns.com/foaf/0.1/>
-prefix myregiones: <http://turis-ucuenca/regiones/>
+prefix myregiones: <http://turis-ucuenca/region/>
 prefix vcard: <http://www.w3.org/2006/vcard/ns#>
 prefix org: <http://www.w3.org/TR/vocab-org/>
 prefix geo: <http://www.opengis.net/ont/geosparql#>
@@ -97,3 +101,5 @@ INSERT {
 } WHERE{
 
 }
+
+"http://turis-ucuenca/user/6386c3ee496c5e73d6d96ffe"
